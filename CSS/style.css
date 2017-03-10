@@ -56,6 +56,18 @@
 .row:after, .clearfix:after { clear: both; }
 .row, .clearfix { zoom: 1; }
 
+.code_unlink{
+	color: #333333;
+	color: rgba(0, 0, 0, .7);
+	text-decoration: none !important;
+}
+
+.code_unlink: hover {
+	color: #333333;
+	color: rgba(0, 0, 0, .7);
+	text-decoration: none !important;
+}
+
 body {
 	background-color: #EEEEEE;
 	color: #333333;
