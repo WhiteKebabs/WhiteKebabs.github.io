@@ -107,7 +107,7 @@
 										<p>For sake of argument, let's only use the size of the houses to infer the price of your house. Below is a list of house sizes and their corresponding house prices around your area.</p>
 										$$
 										\begin{array}{c|c|c}
-										n & \text{Size (m2)} & \text{Price} \\
+										n & \text{Size ($m^{2}$)} & \text{Price} \\
 										\hline
 										1 & 641 & 460 \\
 										2 & 432 & 232 \\
@@ -154,7 +154,7 @@
 										$$ \frac{d}{d \theta_{j}}(J(\theta_{0},\theta_{1}) = \frac{d}{d \theta_{j}}\left({1 \over n}  \sum^{n}_{i=1}{(f(x)-y)^{2}}\right) = {2 \over n} \sum^{n}_{i=1}{(f(x)-y)x_{j}}.$$
 										<pre>
 											12| # Compute the MSE and its derivative</a> <br>
-											13| def mse_derivative(x, y): <br>
+											13| def mse(x, y, deriv=False): <br>
 											14| <a class="code_unlink" style="padding-left:30px">error = []</a> <br>
 											15| <a class="code_unlink" style="padding-left:30px">for data, target in zip(x,y):</a> <br>
 											16| <a class="code_unlink" style="padding-left:60px">if deriv == True:</a> <br>
