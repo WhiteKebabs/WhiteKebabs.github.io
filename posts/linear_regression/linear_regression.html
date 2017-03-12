@@ -170,25 +170,26 @@
 										<p>Before we move on, the concept of $epochs$ must be discussed. The update method that we have arrived at only minimizes the error by a very small amount. In order for the error to be minimized as much as much possible, we must repeat the update process several times. In machine learning, there is a special term called $epochs$, which refers to the number of times an update is performed. For this example, we will choose 1000, but feel free to experiment with smaller and larger values to see how it affects our line.</p>
 										<pre>
 											20| # Calculate the error of our line</a> <br>
-											21| <a class="code_unlink" style="padding-left:30px">error = sum(mse(x, y))</a> <br>
-											22| <a class="code_unlink" style="padding-left:30px">return error</a> <br>
-											23| <br>
-											24| # Perform gradient descent</a> <br>
-											25| def gradient_descent(x, y, epoch=1000): <br>
-											26| <a class="code_unlink" style="padding-left:30px">lr = 0.01 # Learning rate</a> <br>
-											27| <a class="code_unlink" style="padding-left:30px">for i in range(epoch):</a> <br>
-											28| <a class="code_unlink" style="padding-left:60px">error_theta_0 = mse(x, y, deriv=True)</a> <br>
-											29| <a class="code_unlink" style="padding-left:60px">error_theta_1 = [error_theta_0[i] * x[i] for i in range(len(x))]</a> <br>
-											30| <a class="code_unlink" style="padding-left:60px">coefficient[0] -= lr*sum(error_theta_0) </a> <br>
-											31| <a class="code_unlink" style="padding-left:60px">coefficient[1] -= lr*sum(error_theta_1) </a> <br>
-											32| <a class="code_unlink" style="padding-left:60px">if i % 100 == 0:</a> <br>
-											33| <a class="code_unlink" style="padding-left:90px">print("Error at "+ str(i) +" epochs: " + str(test(x,y)))</a> <br>
+											21| def test(x, y):
+											22| <a class="code_unlink" style="padding-left:30px">error = sum(mse(x, y))</a> <br>
+											23| <a class="code_unlink" style="padding-left:30px">return error</a> <br>
+											24| <br>
+											25| # Perform gradient descent</a> <br>
+											26| def gradient_descent(x, y, epoch=1000): <br>
+											27| <a class="code_unlink" style="padding-left:30px">lr = 0.01 # Learning rate</a> <br>
+											28| <a class="code_unlink" style="padding-left:30px">for i in range(epoch):</a> <br>
+											29| <a class="code_unlink" style="padding-left:60px">error_theta_0 = mse(x, y, deriv=True)</a> <br>
+											30| <a class="code_unlink" style="padding-left:60px">error_theta_1 = [error_theta_0[i] * x[i] for i in range(len(x))]</a> <br>
+											31| <a class="code_unlink" style="padding-left:60px">coefficient[0] -= lr*sum(error_theta_0) </a> <br>
+											32| <a class="code_unlink" style="padding-left:60px">coefficient[1] -= lr*sum(error_theta_1) </a> <br>
+											33| <a class="code_unlink" style="padding-left:60px">if i % 100 == 0:</a> <br>
+											34| <a class="code_unlink" style="padding-left:90px">print("Error at "+ str(i) +" epochs: " + str(test(x,y)))</a> <br>
 										</pre>
 										<h4>Putting it all together</h4>
 										<p>Now that we've learnt and coded everything we need to find the line of best fit, we can run the code to test how we have done!</p>
 										<pre>
-											34| size_norm = normalize(size) <br>
-											35| gradient_descent(size_norm, price) <br>
+											35| size_norm = normalize(size) <br>
+											36| gradient_descent(size_norm, price) <br>
 										</pre>
 										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_regression/epochs.gif" sizes="(max-width: 1800px) 100vw, 432px" /></a>
 										<p>If you got the following output, then we've successfully implemented linear regression!</p>
