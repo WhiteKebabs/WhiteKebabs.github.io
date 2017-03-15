@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en-US">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="Shortcut Icon" href="../../assets/icon.png" type="image/x-icon">
+
+	<title>Linear Classification | Walker's ML Blog</title>
+
+	<style type="text/css">
+		img.wp-smiley,
+		img.emoji {
+			display: inline !important;
+			border: none !important;
+			box-shadow: none !important;
+			height: 1em !important;
+			width: 1em !important;
+			margin: 0 .07em !important;
+			vertical-align: -0.1em !important;
+			background: none !important;
+			padding: 0 !important;
+		}
+	</style>
+
+	<link rel='stylesheet' id='swell-style-css'  href='../../CSS/style.css' type='text/css' media='all' />
+
+	<link rel='stylesheet' id='swell-style-mobile-css'  href='../../CSS/style-mobile.css' type='text/css' media='all' />
+
+	<script type='text/javascript' src='../../CSS/jquery.js'></script>
+
+	<script type='text/javascript' src='../../CSS/superfish.js'></script>
+
+	<meta name="generator" content="WordPress 4.6.1" />
+
+	<link rel='dns-prefetch' href='//v0.wordpress.com'>
+	<style type='text/css'>img#wpstats{display:none}</style>		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	<link rel="stylesheet" href="styles.css">
+
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+</head>
+
+<body class="home blog infinite-scroll">
+
+	<!-- BEGIN #wrapper -->
+	<div id="wrapper">
+		<div class="container">
+			<div id="header">
+				<div id="custom-header"  style="background-image: url(../../assets/wallpaper.jpg);">
+					<h1 id="logo" class="vertical-center text-center">
+						<a>
+							<img src="../../assets/title.png" alt="" />
+							<span class="logo-text"></span>
+						</a>
+					</h1>
+					<img class="hide-img" src="../../assets/wallpaper.jpg" height="480" width="1800" alt="Premium Swell Theme Demo" />
+				</div>
+			</div>
+
+
+			<!-- BEGIN #navigation
+			<nav id="navigation" class="navigation-main clearfix" role="navigation">
+				<button class="menu-toggle"><i class="fa fa-bars"></i></button>
+				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35"><a href="../../index.html">Home</a></li>
+
+				<li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161"><a href="index.html">Blog</a>
+					<ul class="sub-menu">
+						<li id="menu-item-168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-168"><a href="index.html">Machine Learning</a></li>
+					</ul>
+				</li>
+				<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="https://Contact">Contact</a></li>
+				</ul></div>
+			</nav>
+			-->
+
+			<div class="post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="page-245">
+				<div class="row">
+					<div class="content">
+						<div class="columns eleven" style="width:100%">
+							<div id="infinite-container" class="postarea">
+
+								<!-- Post -->
+								<div class="blog-holder shadow radius-full post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="post-245">
+
+									<div class="article">
+										<div class="entry">
+											<div class="post-date">
+												<p><i class="fa fa-clock-o"></i> <span class="meta-prep meta-prep-author">Posted:</span> <a title="9:47 pm" rel="bookmark"><span class="entry-date">March 10, 2017</span></a></p>
+											</div>
+											<h2 class="headline"><a rel="bookmark" title="A WordPress Theme Crafted With The Force Of The Ocean">Linear Classification</a></h2>
+											<span class="divider-small"></span>
+										</div>
+										<h4>What Is Linear Classification?</h4>
+										<p>In the previous tutorial, we talked about Linear Regression, and we used it to predict house prices using size of the house as a feature. Linear Regression is great if we are trying to predict real valued outcomes like house prices, but not so great if we want to predict whether something belongs in a certain category or not. In Linear Classification, our goal is to fit a line that separates our data into two classes, and use that line to predict the class of unseen data.</p>
+										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://ajunwalker.github.io/assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_regression/house_fit.png" sizes="(max-width: 1800px) 100vw, 432px" /></a>
+										<h4>Automating Your Job As A Hiring Manager</h4>
+										<p>Suppose your boss assigns you as a hiring manager and tells you to take on his job of hiring software engineers. The only problem is, he doesn't tell you what to look for in the applicants. He hands you a list of past applicants with three fields: GPA, IQ and whether they were hired or not. being the lazy engineer you've always been, you decide to write a script that uses a linear classifier to automate the task using  the data given by your boss.</p>
+										$$
+										\begin{array}{c|c|c|c}
+										n & \text{IQ} & \text{GPA} & \text{Hired} \\
+										\hline
+										1 & 88 & 3.0 & No\\
+										2 & 120 & 2.9 & Yes\\
+										3 & 111 & 4.0 & Yes\\
+										4 & 83 & 3.4 & No\\
+										5 & 94 & 3.8 & Yes\\
+										6 & 106 & 4.0 & Yes\\
+										7 & 108 & 2.5 & No\\
+										8 & 92 & 2.8 & No\\
+										9 & 108 & 3.0 & Yes\\
+										10 & 92 & 4.0 & Yes\\
+										\end{array}
+										$$
+										<p>If we plot the data on a scatter plot, we will get a graph like this:</p>
+										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://ajunwalker.github.io/assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_classifier/scatter.png" sizes="(max-width: 1800px) 100vw, 432px" /></a>
+										<pre>
+											1| # Initializing the data in Python <br>
+											2| size = [641.0, 432.0, 467.0, 259.0] <br>
+											3| price = [460.0, 232.0, 315.0, 178.0]
+										</pre>
+										<h4>Initialization</h4>
+										<p>The goal of a linear classifier is to learn a line (in the case of 2D), or a hyperplane (in the case of 3D+), that separates the data. Because we are dealing with two features, namely GPA and IQ, our model is going to be a 2D line in the form:</p>
+										$$f(x_{1},x_{2}) = \theta_{1}x_{1} + \theta_{2}x_{2},$$
+										<p>where $\theta_{1}$ and $\theta_{2}$ are the two coefficients of the line, $x_{1}$ and $x_{2}$ are our two features we have for each applicant. Just like in the previous tutorial, we will be initializing the coefficients to small values between -1 and 1:</p>
+										$$ f(x_{1},x_{2}) = 0.5x_{1} + 0.5x_{2} $$
+										<pre>
+											4| # Initializing the function coefficients <br>
+											5| coefficient = [-0.25, 0.25] <br>
+										</pre>
+										<h4>Data Preperation</h4>
+										<p>We will be using numpy arrays for this tutorial as it is much simpler to do vector dot products than to manually sum the multiplications of the coefficients and features. Now our equation should look like this:</p>
+										$$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} \theta_{1} \\ \theta_{2} \end{bmatrix} \cdot \begin{bmatrix} x_{1} &  x_{2} \end{bmatrix}$$
+										<p>Before we train our function which we will be referring to as the model from this point on - we need to make the values of the features smaller by normalizing them. If you don't know about normalization, check out my previous tutorial.</p>
+										<h4>Training</h4>
+										<p>There are many well known linear classifier algorithms such as Winnow, but I will be going over the Perceptron algorithm as it is the most popular. </p>
+										<p>So far, everything has been the same as the linear classifier. We have a list of points on a 2D plot, and we initialized a 2D linear function, but this is where things start to change. We will now choose something called a $threshold$, which will be used to classify the output of the function for each applicant in the following way:</p>
+										$$ f(x_{1},x_{2}) = \begin{cases} 0 & f(x_{1},x_{2}) < threshold \\ 1 & f(x_{1},x_{2}) \ge threshold \end{cases} $$
+										<p>where 0 is not hired and 1 is hired. As always, we start by calculating the output of the model to see how off we are. The output of the first example is</p>
+										$$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} 0.5 \\ 0.5 \end{bmatrix} \cdot \begin{bmatrix} 88 &  3.0 \end{bmatrix} = 45.5$$
+										<p>Since out threshold is ___, the output is hired - which isn't what we want. So let's now update the coefficients using the perceptron algorithm. The algorithm is as follows:</p>
+										$$ \theta_{j} := \theta_{j} + (target-f(x,y))x_{j}, $$
+										<p>where $\theta_{j}$ is the $j_{th}$ coefficient, $target$ is the desired outcome, $f(x,y)$ is the output of our function, and $x_{j}$ is the $j_{th}$ feature value that corresponds to the coefficient.</p>
+										<h4>Putting it all together</h4>
+										<p>Now that's we've learnt everything we need to implement the perceptron linear classifier, let's test it out!</p>
+										<p>We can see here that after ____ epochs, the algorithm learnt the data, but the model keeps readjusting itself as there are some outliers that can't be modeled by a linear classifier. This is completely normal as real world data is always going to be noisy, and we are rarely ever going to get a perfect split. </p>
+										<p>We can terminate the function by putting in an if statement that will exit the loop if the average error is below a certain value we set.</p>
+										<p>Congratulations, we have successfully implemented a Linear Classifier!</p>
+									</div>
+								</div>
+								<!-- End Post -->
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div class="footer">
+			<div class="row">
+				<div class="footer-information">
+					<div>
+						<div>
+							<p style="text-align:center;font-size:70%;">Copyright &copy; 2016 &middot; All Rights Reserved &middot; Andrew Walker</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
