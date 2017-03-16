@@ -158,7 +158,7 @@
 										<p>There are many well known linear classifier algorithms such as Winnow, but I will be going over the Perceptron algorithm as it is the most popular. </p>
 										<p>So far, everything has been the same as the linear classifier. We have a list of points on a 2D plot, and we initialized a 2D linear function, but this is where things start to change. We will now choose something called a $threshold$, which will be used to classify the output of the function for each applicant in the following way:</p>
 										$$ f(x_{1},x_{2}) = \begin{cases} 0 & f(x_{1},x_{2}) < threshold \\ 1 & f(x_{1},x_{2}) \ge threshold \end{cases} $$
-										<p>where 0 is not hired and 1 is hired. As always, we start by calculating the output of the model to see how off we are. The output of the first example is</p>
+										<p>where 0 is not hired and 1 is hired. In our perceptron example, we will be using a threshold of 0, but feel free to see how different thresholds affect the learning. So let's now see how much our model with arbitrary coefficients performs. The output of the first example is</p>
 										$$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} 1.0 \\ 1.0 \\ 1.0 \end{bmatrix} \cdot \begin{bmatrix} 1.0 & -0.42 &  -0.23 \end{bmatrix} = 0.35 $$
 										<p>Since out threshold is 0, the output is hired - which isn't what we want. So let's now update the coefficients using the perceptron algorithm. The algorithm is as follows:</p>
 										$$ \theta_{j} := \theta_{j} + (target-f(x,y))x_{j}, $$
