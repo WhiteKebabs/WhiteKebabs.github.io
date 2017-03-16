@@ -101,7 +101,7 @@
 										</div>
 										<h4>What Is Linear Classification?</h4>
 										<p>In the previous tutorial, we talked about Linear Regression, and we used it to predict house prices using size of the house as a feature. Linear Regression is great if we are trying to predict real valued outcomes like house prices, but not so great if we want to predict whether something belongs in a certain category or not. In Linear Classification, our goal is to fit a line that separates our data into two classes, and use that line to predict the class of unseen data.</p>
-										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://ajunwalker.github.io/assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_regression/sample.png" sizes="(max-width: 1800px) 100vw, 432px" /></a>
+										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://ajunwalker.github.io/assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_classifier/sample.png" sizes="(max-width: 1800px) 100vw, 432px" /></a>
 
 
 										<h4>Automating Your Job As A Hiring Manager</h4>
@@ -134,9 +134,9 @@
 
 										<h4>Initialization</h4>
 										<p>The goal of a linear classifier is to learn a line (in the case of 2D), or a hyperplane (in the case of 3D+), that separates the data. Because we are dealing with two features, namely GPA and IQ, our model is going to be a 2D line in the form:</p>
-										$$f(x_{1},x_{2}) = \theta_{1}x_{1} + \theta_{2}x_{2},$$
+										$$f(x_{1},x_{2}) = \theta_{0}x_{0} + \theta_{1}x_{1} + \theta_{2}x_{2},$$
 										<p>where $\theta_{1}$ and $\theta_{2}$ are the two coefficients of the line, $x_{1}$ and $x_{2}$ are our two features we have for each applicant. Just like in the previous tutorial, we will be initializing the coefficients to small values between -1 and 1:</p>
-										$$ f(x_{1},x_{2}) = 0.5x_{1} + 0.5x_{2} $$
+										$$ f(x_{1},x_{2}) = 1.0x_{0} + 1.0x_{1} + 1.0x_{2} $$
 
 
 										<h4>Data Preperation</h4>
