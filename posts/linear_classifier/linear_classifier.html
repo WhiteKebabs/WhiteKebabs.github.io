@@ -1,47 +1,13 @@
 <!DOCTYPE html>
-
 <html class="no-js" lang="en-US">
 
 <head>
-
 	<meta charset="UTF-8">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="Shortcut Icon" href="../../assets/icon.png" type="image/x-icon">
-
-	<title>Linear Classification | Walker's ML Blog</title>
-
-	<style type="text/css">
-		img.wp-smiley,
-		img.emoji {
-			display: inline !important;
-			border: none !important;
-			box-shadow: none !important;
-			height: 1em !important;
-			width: 1em !important;
-			margin: 0 .07em !important;
-			vertical-align: -0.1em !important;
-			background: none !important;
-			padding: 0 !important;
-		}
-	</style>
-
-	<link rel='stylesheet' id='swell-style-css'  href='../../CSS/style.css' type='text/css' media='all' />
-
-	<link rel='stylesheet' id='swell-style-mobile-css'  href='../../CSS/style-mobile.css' type='text/css' media='all' />
-
-	<script type='text/javascript' src='../../CSS/jquery.js'></script>
-
-	<script type='text/javascript' src='../../CSS/superfish.js'></script>
-
-	<meta name="generator" content="WordPress 4.6.1" />
-
-	<link rel='dns-prefetch' href='//v0.wordpress.com'>
-	<style type='text/css'>img#wpstats{display:none}</style>		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-	<link rel="stylesheet" href="styles.css">
-
-	<script type="text/x-mathjax-config">
+	<title>Walker's ML Blog</title>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+	<link rel="stylesheet" href="../../CSS/main.css">
+  <script type="text/x-mathjax-config">
 	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 	</script>
 	<script type="text/javascript"
@@ -49,189 +15,125 @@
 	</script>
 </head>
 
-<body class="home blog infinite-scroll">
+  <body>
 
-	<!-- BEGIN #wrapper -->
-	<div id="wrapper">
-		<div class="container">
-			<div id="header">
-				<div id="custom-header"  style="background-image: url(../../assets/wallpaper.jpg);">
-					<h1 id="logo" class="vertical-center text-center">
-						<a>
-							<img src="../../assets/title.png" alt="" />
-							<span class="logo-text"></span>
-						</a>
-					</h1>
-					<img class="hide-img" src="../../assets/wallpaper.jpg" height="480" width="1800" alt="Premium Swell Theme Demo" />
-				</div>
-			</div>
+  	<div class="header-image">
+  		<img class="header-title-mini" src="https://ajunwalker.github.io/assets/title.png"/>
+  	</div>
+
+    <div class="post-details-container">
+      <label class="post-date">Posted: June 11, 2019</label>
+      <h1>Beginner: Linear Classification</h1>
+      <div class="split-bar"></div>
+      <div class="post-description">
+        <h2>What Is Linear Classification?</h2>
+        <p>In the previous tutorial, we talked about Linear Regression, and we used it to predict house prices using size of the house as a feature. Linear Regression is great if we are trying to predict real valued outcomes like house prices, but not so great if we want to predict whether something belongs in a certain category or not. In Linear Classification, our goal is to fit a line that separates our data into two classes, and use that line to predict the class of unseen data.</p>
+        <div class="plot-img" ><img class="plot-img" src="sample.png"/></div>
 
 
-			<!-- BEGIN #navigation
-			<nav id="navigation" class="navigation-main clearfix" role="navigation">
-				<button class="menu-toggle"><i class="fa fa-bars"></i></button>
-				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35"><a href="../../index.html">Home</a></li>
-
-				<li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161"><a href="index.html">Blog</a>
-					<ul class="sub-menu">
-						<li id="menu-item-168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-168"><a href="index.html">Machine Learning</a></li>
-					</ul>
-				</li>
-				<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="https://Contact">Contact</a></li>
-				</ul></div>
-			</nav>
-			-->
-
-			<div class="post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="page-245">
-				<div class="row">
-					<div class="content">
-						<div class="columns eleven" style="width:100%">
-							<div id="infinite-container" class="postarea">
-
-								<!-- Post -->
-								<div class="blog-holder shadow radius-full post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="post-245">
-
-									<div class="article">
-										<div class="entry">
-											<div class="post-date">
-												<p><i class="fa fa-clock-o"></i> <span class="meta-prep meta-prep-author">Posted:</span> <a title="9:47 pm" rel="bookmark"><span class="entry-date">March 16, 2017</span></a></p>
-											</div>
-											<h2 class="headline"><a rel="bookmark" title="A WordPress Theme Crafted With The Force Of The Ocean">Linear Classification</a></h2>
-											<span class="divider-small"></span>
-										</div>
-										<h4>What Is Linear Classification?</h4>
-										<p>In the previous tutorial, we talked about Linear Regression, and we used it to predict house prices using size of the house as a feature. Linear Regression is great if we are trying to predict real valued outcomes like house prices, but not so great if we want to predict whether something belongs in a certain category or not. In Linear Classification, our goal is to fit a line that separates our data into two classes, and use that line to predict the class of unseen data.</p>
-										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://ajunwalker.github.io/assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_classifier/sample.png" sizes="(max-width: 1800px) 100vw, 432px" /></a>
+        <h2>Automating Your Job As A Hiring Manager</h2>
+        <p>Suppose your boss assigns you as a hiring manager and tells you to take on his job of hiring software engineers. The only problem is, he doesn't tell you what to look for in the applicants. He hands you a list of past applicants with three fields: GPA, IQ and whether they were hired or not. being the lazy engineer you've always been, you decide to write a script that uses a linear classifier to automate the task using  the data given by your boss.</p>
+        $$
+        \begin{array}{c|c|c|c}
+        n & \text{IQ} & \text{GPA} & \text{Hired} \\
+        \hline
+        1 & 88 & 3.0 & No\\
+        2 & 120 & 2.9 & Yes\\
+        3 & 111 & 4.0 & Yes\\
+        4 & 83 & 3.4 & No\\
+        5 & 94 & 3.8 & Yes\\
+        6 & 106 & 4.0 & Yes\\
+        7 & 108 & 2.5 & No\\
+        8 & 92 & 2.8 & No\\
+        9 & 108 & 3.0 & Yes\\
+        10 & 92 & 4.0 & Yes\\
+        \end{array}
+        $$
+        <p>If we plot the data on a scatter plot, we will get a graph like this:</p>
+        <div class="plot-img" ><img class="plot-img" src="scatter.png"/></div>
+        <pre><code>
+# Initializing the data in Python
+IQ = [88, 120, 111, 83, 94, 106, 108, 92, 115, 120]
+GPA = [3.0, 2.9, 4.0, 3.4, 3.8, 4.0, 2.5, 2.8, 3.0, 4.0]
+labels = [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0]</code>
+        </pre>
 
 
-										<h4>Automating Your Job As A Hiring Manager</h4>
-										<p>Suppose your boss assigns you as a hiring manager and tells you to take on his job of hiring software engineers. The only problem is, he doesn't tell you what to look for in the applicants. He hands you a list of past applicants with three fields: GPA, IQ and whether they were hired or not. being the lazy engineer you've always been, you decide to write a script that uses a linear classifier to automate the task using  the data given by your boss.</p>
-										$$
-										\begin{array}{c|c|c|c}
-										n & \text{IQ} & \text{GPA} & \text{Hired} \\
-										\hline
-										1 & 88 & 3.0 & No\\
-										2 & 120 & 2.9 & Yes\\
-										3 & 111 & 4.0 & Yes\\
-										4 & 83 & 3.4 & No\\
-										5 & 94 & 3.8 & Yes\\
-										6 & 106 & 4.0 & Yes\\
-										7 & 108 & 2.5 & No\\
-										8 & 92 & 2.8 & No\\
-										9 & 108 & 3.0 & Yes\\
-										10 & 92 & 4.0 & Yes\\
-										\end{array}
-										$$
-										<p>If we plot the data on a scatter plot, we will get a graph like this:</p>
-										<a class="feature-img radius-top" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="288" src="https://ajunwalker.github.io/assets/wallpaper.jpg" style="height:288px; width:432px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_classifier/scatter.png" sizes="(max-width: 1800px) 100vw, 432px" /></a>
-										<pre>
-											1| # Initializing the data in Python <br>
-											2| IQ = [88, 120, 111, 83, 94, 106, 108, 92, 115, 120] <br>
-											3| GPA = [3.0, 2.9, 4.0, 3.4, 3.8, 4.0, 2.5, 2.8, 3.0, 4.0] <br>
-											4| labels = [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0]
-										</pre>
+        <h2>Initialization</h2>
+        <p>The goal of a linear classifier is to learn a line (in the case of 2D), or a hyperplane (in the case of 3D+), that separates the data. Because we are dealing with two features, namely GPA and IQ, our model is going to be a 2D line in the form:</p>
+        $$f(x_{1},x_{2}) = \theta_{0}x_{0} + \theta_{1}x_{1} + \theta_{2}x_{2},$$
+        <p>where $\theta_{1}$ and $\theta_{2}$ are the two coefficients of the line, $x_{1}$ and $x_{2}$ are our two features we have for each applicant. Just like in the previous tutorial, we will be initializing the coefficients to small values between -1 and 1:</p>
+        $$ f(x_{1},x_{2}) = 1.0x_{0} + 1.0x_{1} + 1.0x_{2} $$
 
 
-										<h4>Initialization</h4>
-										<p>The goal of a linear classifier is to learn a line (in the case of 2D), or a hyperplane (in the case of 3D+), that separates the data. Because we are dealing with two features, namely GPA and IQ, our model is going to be a 2D line in the form:</p>
-										$$f(x_{1},x_{2}) = \theta_{0}x_{0} + \theta_{1}x_{1} + \theta_{2}x_{2},$$
-										<p>where $\theta_{1}$ and $\theta_{2}$ are the two coefficients of the line, $x_{1}$ and $x_{2}$ are our two features we have for each applicant. Just like in the previous tutorial, we will be initializing the coefficients to small values between -1 and 1:</p>
-										$$ f(x_{1},x_{2}) = 1.0x_{0} + 1.0x_{1} + 1.0x_{2} $$
+        <h2>Data Preperation</h2>
+        <p>We will be using numpy arrays for this tutorial as it is much simpler to do vector dot products than to manually sum the multiplications of the coefficients and features. Now our equation should look like this:</p>
+        $$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} \theta_{0} \\ \theta_{1} \\ \theta_{2} \end{bmatrix} \cdot \begin{bmatrix} x_{0} & x_{1} &  x_{2} \end{bmatrix}$$
+        <p>Before we train our function which we will be referring to as the model from this point on - we need to make the values of the features smaller by normalizing them. If you don't know about normalization, check out my previous tutorial.</p>
 
+        <pre><code->
+# Initializing the function coefficients
+coefficient = np.array([1.0, 1.0, 1.0])
 
-										<h4>Data Preperation</h4>
-										<p>We will be using numpy arrays for this tutorial as it is much simpler to do vector dot products than to manually sum the multiplications of the coefficients and features. Now our equation should look like this:</p>
-										$$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} \theta_{0} \\ \theta_{1} \\ \theta_{2} \end{bmatrix} \cdot \begin{bmatrix} x_{0} & x_{1} &  x_{2} \end{bmatrix}$$
-										<p>Before we train our function which we will be referring to as the model from this point on - we need to make the values of the features smaller by normalizing them. If you don't know about normalization, check out my previous tutorial.</p>
+# Creating the feature matrix
+examples = np.ones((3,10))
+examples[1] = normalize(IQ)
+examples[2] = normalize(GPA)</code>
+        </pre>
 
-										<pre>
-											<a class="code_unlink" style="padding-left:8px"></a> 6| # Initializing the function coefficients </a> <br>
-											<a class="code_unlink" style="padding-left:8px"> 7| coefficient = np.array([1.0, 1.0, 1.0]) <br>
-											<a class="code_unlink" style="padding-left:8px"></a> 8| <br>
-											<a class="code_unlink" style="padding-left:8px"></a> 9| # Creating the feature matrix </a> <br>
-											10| examples = np.ones((3,10)) <br>
-											11| examples[1] = normalize(IQ) <br>
-											12| examples[2] = normalize(GPA)
-										</pre>
+        <h2>Training</h2>
+        <p>There are many well known linear classifier algorithms such as Winnow, but I will be going over the Perceptron algorithm as it is the most popular. </p>
+        <p>So far, everything has been the same as the linear classifier. We have a list of points on a 2D plot, and we initialized a 2D linear function, but this is where things start to change. We will now choose something called a $threshold$, which will be used to classify the output of the function for each applicant in the following way:</p>
+        $$ f(x_{1},x_{2}) = \begin{cases} 0 & f(x_{1},x_{2}) < threshold \\ 1 & f(x_{1},x_{2}) \ge threshold \end{cases} $$
+        <p>where 0 is not hired and 1 is hired. In our perceptron example, we will be using a threshold of 0, but feel free to see how different thresholds affect the learning. So let's now see how much our model with arbitrary coefficients performs. The output of the first example is</p>
+        $$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} 1.0 \\ 1.0 \\ 1.0 \end{bmatrix} \cdot \begin{bmatrix} 1.0 & -0.42 &  -0.23 \end{bmatrix} = 0.35 $$
+        <p>Since out threshold is 0, the output is hired - which isn't what we want. So let's now update the coefficients using the perceptron algorithm. The algorithm is as follows:</p>
+        $$ \theta_{j} := \theta_{j} + (target-f(x,y))x_{j}, $$
+        <p>where $\theta_{j}$ is the $j_{th}$ coefficient, $target$ is the desired outcome, $f(x_{1},x_{2})$ is the output of our function, and $x_{j}$ is the $j_{th}$ feature value that corresponds to the coefficient.</p>
 
-										<h4>Training</h4>
-										<p>There are many well known linear classifier algorithms such as Winnow, but I will be going over the Perceptron algorithm as it is the most popular. </p>
-										<p>So far, everything has been the same as the linear classifier. We have a list of points on a 2D plot, and we initialized a 2D linear function, but this is where things start to change. We will now choose something called a $threshold$, which will be used to classify the output of the function for each applicant in the following way:</p>
-										$$ f(x_{1},x_{2}) = \begin{cases} 0 & f(x_{1},x_{2}) < threshold \\ 1 & f(x_{1},x_{2}) \ge threshold \end{cases} $$
-										<p>where 0 is not hired and 1 is hired. In our perceptron example, we will be using a threshold of 0, but feel free to see how different thresholds affect the learning. So let's now see how much our model with arbitrary coefficients performs. The output of the first example is</p>
-										$$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} 1.0 \\ 1.0 \\ 1.0 \end{bmatrix} \cdot \begin{bmatrix} 1.0 & -0.42 &  -0.23 \end{bmatrix} = 0.35 $$
-										<p>Since out threshold is 0, the output is hired - which isn't what we want. So let's now update the coefficients using the perceptron algorithm. The algorithm is as follows:</p>
-										$$ \theta_{j} := \theta_{j} + (target-f(x,y))x_{j}, $$
-										<p>where $\theta_{j}$ is the $j_{th}$ coefficient, $target$ is the desired outcome, $f(x_{1},x_{2})$ is the output of our function, and $x_{j}$ is the $j_{th}$ feature value that corresponds to the coefficient.</p>
+        <pre><code>
+def test(examples):
+    error = 0
+    global coefficient
+    for example, label in zip(examples.T, labels):
+        output = coefficient.dot(example.T)
+        if output > 0:
+            output = 1
+        else:
+            output = 0
+        error += label - output
+    return error/len(examples)
 
-										<pre>
-											13| def test(examples): <br>
-    										14| <a class="code_unlink" style="padding-left:30px"> error = 0 </a><br>
-    										15| <a class="code_unlink" style="padding-left:30px"> global coefficient</a><br>
-    										16| <a class="code_unlink" style="padding-left:30px"> for example, label in zip(examples.T, labels):</a><br>
-            								17| <a class="code_unlink" style="padding-left:60px"> output = coefficient.dot(example.T)</a><br>
-            								18| <a class="code_unlink" style="padding-left:60px"> if output > 0:</a><br>
-                							19| <a class="code_unlink" style="padding-left:90px"> output = 1</a><br>
-            								20| <a class="code_unlink" style="padding-left:60px"> else:</a><br>
-                							21| <a class="code_unlink" style="padding-left:90px"> output = 0</a><br>
-            								22| <a class="code_unlink" style="padding-left:60px"> error += label - output</a><br>
-    										23| <a class="code_unlink" style="padding-left:30px"> return error/len(examples)</a><br>
-											24| <br>
-											25| def train(examples, epochs=25): <br>
-    										26| <a class="code_unlink" style="padding-left:30px"> global coefficient</a><br>
-    										27| <a class="code_unlink" style="padding-left:30px"> for i in range(epochs):</a><br>
-        									28| <a class="code_unlink" style="padding-left:60px"> for example, label in zip(examples.T, labels):</a><br>
-            								29| <a class="code_unlink" style="padding-left:90px"> output = coefficient.dot(example.T)</a><br>
-            								30| <a class="code_unlink" style="padding-left:90px"> if output > 0:</a><br>
-                							31| <a class="code_unlink" style="padding-left:120px"> output = 1</a><br>
-            								32| <a class="code_unlink" style="padding-left:90px"> else:</a><br>
-                							33| <a class="code_unlink" style="padding-left:120px"> output = 0</a><br>
-            								34| <a class="code_unlink" style="padding-left:90px"> error = label - output</a><br>
-            								35| <a class="code_unlink" style="padding-left:90px"> coefficient += 0.01*error*example</a><br>
-        									36| <a class="code_unlink" style="padding-left:60px"> print("Error at " + str(i+1) + " epochs:\t" + str(test(examples)))</a><br>
-										</pre>
+def train(examples, epochs=25):
+    global coefficient
+    for i in range(epochs):
+        for example, label in zip(examples.T, labels):
+            output = coefficient.dot(example.T)
+            if output > 0:
+                output = 1
+            else:
+                output = 0
+            error = label - output
+            coefficient += 0.01*error*example
+        print("Error at " + str(i+1) + " epochs:\t" + str(test(examples)))</code>
+        </pre>
 
-										<h4>Putting it all together</h4>
-										<p>Now that's we've learnt everything we need to implement the perceptron linear classifier, let's test it out!</p>
+        <h2>Putting it all together</h2>
+        <p>Now that's we've learnt everything we need to implement the perceptron linear classifier, let's test it out!</p>
 
-										<pre>
-											37| train(examples)
-										</pre>
-										<pre>
-											Error at 5 epochs:	-1.3333333333333333 <br>
-											Error at 10 epochs:	-0.6666666666666666 <br>
-											Error at 15 epochs:	-0.3333333333333333 <br>
-											Error at 20 epochs:	0.0 <br>
-											Error at 25 epochs:	0.0 <br>
-										</pre>
+        <pre><code>
+train(examples)</code>
+        </pre>
+        <pre><code>
+Error at 5 epochs:	-1.3333333333333333
+Error at 10 epochs:	-0.6666666666666666
+Error at 15 epochs:	-0.3333333333333333
+Error at 20 epochs:	0.0
+Error at 25 epochs:	0.0</code>
+        </pre>
 
-										<p>We can see here that after 20 epochs, the algorithm managed to learn the data!</p>
-										<p>Congratulations, we have successfully implemented a Linear Classifier!</p>
-									</div>
-								</div>
-								<!-- End Post -->
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Footer -->
-		<div class="footer">
-			<div class="row">
-				<div class="footer-information">
-					<div>
-						<div>
-							<p style="text-align:center;font-size:70%;">Copyright &copy; 2016 &middot; All Rights Reserved &middot; Andrew Walker</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</body>
-</html>
+        <p>We can see here that after 20 epochs, the algorithm managed to learn the data!</p>
+        <p>Congratulations, we have successfully implemented a Linear Classifier!</p>
+      </div>
+    </body>
+  </html>
