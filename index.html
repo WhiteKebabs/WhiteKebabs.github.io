@@ -1,162 +1,74 @@
 <!DOCTYPE html>
-
 <html class="no-js" lang="en-US">
 
 <head>
-
 	<meta charset="UTF-8">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="Shortcut Icon" href="https://assets/icon.png" type="image/x-icon">
-
 	<title>Walker's ML Blog</title>
-
-	<style type="text/css">
-		img.wp-smiley,
-		img.emoji {
-			display: inline !important;
-			border: none !important;
-			box-shadow: none !important;
-			height: 1em !important;
-			width: 1em !important;
-			margin: 0 .07em !important;
-			vertical-align: -0.1em !important;
-			background: none !important;
-			padding: 0 !important;
-		}
-	</style>
-
-	<link rel='stylesheet' id='swell-style-css'  href='CSS/style.css' type='text/css' media='all' />
-
-	<link rel='stylesheet' id='swell-style-mobile-css'  href='CSS/style-mobile.css' type='text/css' media='all' />
-
-	<script type='text/javascript' src='https://ajunwalker.github.io/CSS/jquery.js'></script>
-
-	<script type='text/javascript' src='https://ajunwalker.github.io/CSS/superfish.js'></script>
-
-	<meta name="generator" content="WordPress 4.6.1" />
-
-	<link rel='dns-prefetch' href='//v0.wordpress.com'>
-	<style type='text/css'>img#wpstats{display:none}</style>		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-	<link rel="stylesheet" href="styles.css">
-
-	<script type="text/x-mathjax-config">
-	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-	</script>
-	<script type="text/javascript"
-	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-	</script>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+	<link rel="stylesheet" href="CSS/main.css">
 </head>
 
-<body class="home blog infinite-scroll">
+<body>
 
-	<!-- BEGIN #wrapper -->
-	<div id="wrapper">
-		<div class="container">
-			<div id="header">
-				<div id="custom-header"  style="background-image: url(assets/wallpaper.jpg);">
-					<h1 id="logo" class="vertical-center text-center">
-						<a>
-							<img src="https://ajunwalker.github.io/assets/title.png" alt="" />
-							<span class="logo-text"></span>
-						</a>
-					</h1>
-					<img class="hide-img" src="https://ajunwalker.github.io/assets/wallpaper.jpg" height="480" width="1800" alt="Premium Swell Theme Demo" />
-				</div>
+	<div class="header-image">
+		<img class="header-title" src="https://ajunwalker.github.io/assets/title.png"/>
+	</div>
+
+	<div class="main-container">
+
+		<div class="post-container">
+			<div>
+				<a href="posts/linear_classifier/linear_classifier.html">
+					<img class="post-image" src="posts/linear_classifier/wallpaper.png"/>
+				</a>
 			</div>
-
-
-			<!-- BEGIN #navigation
-			<nav id="navigation" class="navigation-main clearfix" role="navigation">
-				<button class="menu-toggle"><i class="fa fa-bars"></i></button>
-				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35"><a href="index.html">Home</a></li>
-
-				<li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161"><a href="index.html">Blog</a>
-					<ul class="sub-menu">
-						<li id="menu-item-168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-168"><a href="index.html">Machine Learning</a></li>
-					</ul>
-				</li>
-				<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="https://Contact">Contact</a></li>
-				</ul></div>
-			</nav>
-			 -->
-
-			<div class="post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="page-245">
-				<div class="row">
-					<div class="content">
-						<div class="columns eleven">
-							<div id="infinite-container" class="postarea">
-
-								<!-- Post -->
-								<div class="blog-holder shadow radius-full post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="post-245">
-									<a class="feature-img radius-top" href="posts/linear_regression/linear_regression.html" height="600" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="600" src="https://ajunwalker.github.io/posts/linear_classifier/wallpaper.pngg" style="height:300px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_classifier/wallpaper.png" sizes="(max-width: 1800px) 100vw, 1800px" /></a>
-									<div class="article">
-										<div class="entry">
-											<div class="post-date">
-												<p><i class="fa fa-clock-o"></i> <span class="meta-prep meta-prep-author">Posted:</span> <a title="9:47 pm" rel="bookmark"><span class="entry-date">March 16, 2017</span></a></p>
-											</div>
-											<h2 class="headline"><a href="posts/linear_regression/linear_regression.html" rel="bookmark" title="A WordPress Theme Crafted With The Force Of The Ocean">Linear Classifier</a></h2>
-											<span class="divider-small"></span>
-										</div>
-										<p></p>
-									<p>In the previous tutorial, we talked about Linear Regression, and we used it to predict house prices using size of the house as a feature. Linear Regression is great if we are trying to predict real valued outcomes like house prices, but not so great if we want to predict whether something belongs in a certain category or not. In Linear Classification, our goal is to fit a line that separates our data into two classes, and use that line to predict the class of unseen data.</p>
-										<a href="posts/linear_classifier/linear_classifier.html" class="more-link">Read More</a>
-									</div>
-								</div>
-								<!-- End Post -->
-
-								<!-- Post -->
-								<div class="blog-holder shadow radius-full post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="post-245">
-									<a class="feature-img radius-top" href="posts/linear_regression/linear_regression.html" height="600" rel="bookmark" title="Permalink to A WordPress Theme Crafted With The Force Of The Ocean"><img width="1800" height="600" src="https://ajunwalker.github.io/posts/linear_regression/wallpaper.pngg" style="height:300px" class="attachment-swell-featured-large size-swell-featured-large wp-post-image" alt="post-17" srcset="https://ajunwalker.github.io/posts/linear_regression/wallpaper.png" sizes="(max-width: 1800px) 100vw, 1800px" /></a>
-									<div class="article">
-										<div class="entry">
-											<div class="post-date">
-												<p><i class="fa fa-clock-o"></i> <span class="meta-prep meta-prep-author">Posted:</span> <a title="9:47 pm" rel="bookmark"><span class="entry-date">March 10, 2017</span></a></p>
-											</div>
-											<h2 class="headline"><a href="posts/linear_regression/linear_regression.html" rel="bookmark" title="A WordPress Theme Crafted With The Force Of The Ocean">Linear Regression</a></h2>
-											<span class="divider-small"></span>
-										</div>
-										<p></p>
-									<p>You might've come across the term 'line of best fit' at school if you took an introductory statistics course, which is a line on a scatter plot that best represents the data. In the case of a two dimensional plot, this line will be $y=mx+b$.</p>
-										<a href="posts/linear_regression/linear_regression.html" class="more-link">Read More</a>
-									</div>
-								</div>
-								<!-- End Post -->
-
-							</div>
-						</div>
-
-						<!--Side bar-->
-						<div class="five columns">
-							<div class="sidebar">
-								<div id="search-2" class="widget widget_search">
-									<div class="blog-holder shadow radius-full post-245 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-work tag-free tag-ocean tag-theme tag-wordpress" id="post-245">
-										<div style="text-align:center;padding-top:5%"><div style="padding-bottom:5%">About me</div><img style="border-radius:50%; width:60%" src="https://ajunwalker.github.io/assets/me.jpg" alt=""/><div style="padding:5%;padding-left:10%;padding-right:10%;font-size:75%;text-align:left"><p>Hey, my name is Andrew and I'm currently a student at UNSW Australia studying Computer Science.</p><p>My goal is to help people understand concepts and algorithms in the field of Machine Learning and Artificial Intelligence in the simplest way possible.</p></div></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			<div class="post-content">
+				<label class="post-date">Posted: June 11, 2019</label>
+				<a class="article-link" href="posts/linear_classifier/linear_classifier.html">
+					<h2>Beginner: Linear Classification</h2>
+				</a>
+				<div class="split-bar"></div>
+				<div class="post-description">
+					A gentle introduction to linear classification for beginners.
 				</div>
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div class="footer">
-			<div class="row">
-				<div class="footer-information">
-					<div>
-						<div>
-							<p style="text-align:center;font-size:70%;">Copyright &copy; 2016 &middot; All Rights Reserved &middot; Andrew Walker</p>
-						</div>
-					</div>
+		<div class="post-container">
+			<div>
+				<a href="posts/linear_regression/linear_regression.html">
+					<img class="post-image" src="posts/linear_regression/wallpaper.png"/>
+				</a>
+			</div>
+			<div class="post-content">
+				<label class="post-date">Posted: May 16, 2019</label>
+				<a class="article-link" href="posts/linear_regression/linear_regression.html">
+					<h2>Beginner: Linear Regression</h2>
+				</a>
+				<div class="split-bar"></div>
+				<div class="post-description">
+					A gentle introduction to linear regression for beginners.
+				</div>
+			</div>
+		</div>
+
+		<div class="post-container">
+			<div>
+				<img class="my-image" src="assets/me_2.png"/>
+			</div>
+			<div class="post-content">
+				<h2>About Me</h2>
+				<div class="split-bar"></div>
+				<div class="post-description">
+					Hey, my name is Andrew and I'm a machine learning engineer.
+				</div>
+				<div class="post-description">
+					I write tutorials to give people an in-depth understanding of machine learning algorithms and concepts.
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<script type='text/javascript' src='CSS/jquery.custom.js'></script>
 
 </body>
 </html>
