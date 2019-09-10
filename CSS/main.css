@@ -21,10 +21,12 @@ p {
     line-height: 1.7;
 }
 
+.my-image-container {
+    text-align: center;
+}
+
 .my-image {
     margin-top: 40px;
-    margin-left: 75px;
-    margin-right: 75px;
     border-radius: 40px;
     width: 250px;
     height: 250px;
