@@ -70,7 +70,8 @@ coefficient = [-0.25, 0.25]</code>
         <p>The general approach in linear regression is to start with a randomized equation of a line, and slowly 'tweak' the coefficients of the equation to get as close as possible to the correct position. Before we can even attempt to tweak the coefficients, we need to figure out how off our randomized line is. We can do this by calculating how far each point is from the line, a.k.a. calculating the mean squared error (MSE). The formula for MSE is the following:</p>
         $$ J(\theta_{0},\theta_{1}) = {{1 \over n} \sum^{n}_{i=1}{(f(x)-y)^{2}}}.$$
         <p>Here $f(x)$ refers to the equation of the line we created earlier, y refers to the actual value we are trying to predict, and n is the number of data points we have. If we replace these variables with values we are concerned with for predicting house prices, we will get the following:</p>
-        $$ J(\theta_{0},\theta_{1}) = \small \frac{(160 - 460)^{2} + (107.75 - 232)^{2} + (116.5 - 315)^{2} + (64.5 - 178)^{2}}{4} = 39430.64. $$
+        <p class="small-equation">$$ \begin{align}J(\theta_{0},\theta_{1}) &= \small \frac{(160 - 460)^{2} + (107.75 - 232)^{2} + (116.5 - 315)^{2} + (64.5 - 178)^{2}}{4} \\
+																																					 &= 39430.64. \end{align}$$</p>
         <p>According to MSE, we have an error of 39430.64, which is a pretty large error. This is because the the size of the houses are quite large relative to the coefficients of the function and we must normalize them so we start with a smaller error and it does not take forever to find the line of best fit. The method we are going to use to normalize the size of the houses is</p>
         $$ x' = \frac{x-\bar{x}}{max(x)-min(x)},$$
         <p>where $x$ is the original value of the size, $\bar{x}$, $max$ and $min$ are the mean, maximum and minimum of the size of houses respectively. Keep in mind that as the points are not lined up properly, it is impossible for us to get an error of zero. This turns out to be the case in most scenarios when we are dealing with real world problems.</p>
@@ -86,17 +87,23 @@ def normalize(x):
         <h2>The Derivative</h2>
         <p>Now that we have calculated the error, we want to decrease the error as much as we can using derivatives. If you are unfamiliar with derivatives, I strongly encourage you to watch a great series on derivates <a href="https://www.khanacademy.org/math/differential-equations">here</a>.</p>
         <p>So how can we minimize the error produced by the MSE formula? One way to approach this problem is to calculate the derivative of the MSE function - which we will call the $error$ $function$ from this point on, using the chain rule and equate it to zero. I have already found the derivative for you below:</p>
-        $$ \frac{d}{d \theta_{j}}(J(\theta_{0},\theta_{1}) = \frac{d}{d \theta_{j}}\left({1 \over n}  \sum^{n}_{i=1}{(f(x)-y)^{2}}\right) = {2 \over n} \sum^{n}_{i=1}{(f(x)-y)x_{j}}.$$
-        <pre>
+        $$
+					\begin{align}
+						\frac{d}{d \theta_{j}}(J(\theta_{0},\theta_{1}) &= \frac{d}{d \theta_{j}}\left({1 \over n}  \sum^{n}_{i=1}{(f(x)-y)^{2}}\right) \\
+																														&= {2 \over n} \sum^{n}_{i=1}{(f(x)-y)x_{j}}.
+					\end{align}
+				$$
+				<pre>
         <code>
 # Compute the MSE and its derivative
 def mse(x, y, deriv=False):
     error = []
     for data, target in zip(x,y):
+	pred = coefficient[0] + coefficient[1] * data
         if deriv == True:
-            error.append(2*((coefficient[0] + coefficient[1]*data)-target)/len(x))
+            error.append(2 * (pred - target) / len(x))
         else:
-            error.append((((coefficient[0] + coefficient[1]*data)-target)**2)/len(x))
+            error.append(((pred - target) ** 2) / len(x))
     return error</code>
         </pre>
         <h2>Gradient Descent</h2>
@@ -116,11 +123,12 @@ def gradient_descent(x, y, epoch=1000):
     lr = 0.01 # Learning rate
     for i in range(epoch):
         error_theta_0 = mse(x, y, deriv=True)
-        error_theta_1 = [error_theta_0[i] * x[i] for i in range(len(x))]
+        error_theta_1 = [error_theta_0[i] * val for val in x]
         coefficient[0] -= lr*sum(error_theta_0)
         coefficient[1] -= lr*sum(error_theta_1)
         if i % 100 == 0:
-            print("Error at "+ str(i) +" epochs: " + str(test(x,y)))</code>
+	    error = test(x,y)
+	    print("Error at {} epochs: {}".format(i, error))</code>
         </pre>
         <h2>Putting it all together</h2>
         <p>Now that we've learnt and coded everything we need to find the line of best fit, we can run the code to test how we have done!</p>
@@ -129,7 +137,7 @@ def gradient_descent(x, y, epoch=1000):
 size_norm = normalize(size)
 gradient_descent(size_norm, price)</code>
         </pre>
-        <div class="plot-img" ><img src="epochs.gif"/></div>
+        <div class="plot-img" ><img class="plot-img" src="epochs.gif"/></div>
         <p>If you got the following output, then we've successfully implemented linear regression!</p>
         <pre>
           <code>

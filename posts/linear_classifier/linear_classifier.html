@@ -71,7 +71,7 @@ labels = [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0]</code>
         $$ f(x_{1}, x_{2}) = W \cdot X =\begin{bmatrix} \theta_{0} \\ \theta_{1} \\ \theta_{2} \end{bmatrix} \cdot \begin{bmatrix} x_{0} & x_{1} &  x_{2} \end{bmatrix}$$
         <p>Before we train our function which we will be referring to as the model from this point on - we need to make the values of the features smaller by normalizing them. If you don't know about normalization, check out my previous tutorial.</p>
 
-        <pre><code->
+        <pre><code>
 # Initializing the function coefficients
 coefficient = np.array([1.0, 1.0, 1.0])
 
@@ -106,7 +106,7 @@ def test(examples):
 
 def train(examples, epochs=25):
     global coefficient
-    for i in range(epochs):
+    for i in range(1, epochs + 1):
         for example, label in zip(examples.T, labels):
             output = coefficient.dot(example.T)
             if output > 0:
@@ -115,7 +115,8 @@ def train(examples, epochs=25):
                 output = 0
             error = label - output
             coefficient += 0.01*error*example
-        print("Error at " + str(i+1) + " epochs:\t" + str(test(examples)))</code>
+		e = test(examples)
+		print("Error at {} epochs: {}".format(i,e))</code>
         </pre>
 
         <h2>Putting it all together</h2>
