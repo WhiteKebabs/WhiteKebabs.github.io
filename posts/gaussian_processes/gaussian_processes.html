@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Walker's ML Blog</title>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+	<link rel="stylesheet" href="../../CSS/main.css">
+  <script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+</head>
+
+  <body>
+
+  	<div class="header-image">
+  		<img class="header-title-mini" src="https://ajunwalker.github.io/assets/title.png"/>
+  	</div>
+
+    <div class="post-details-container">
+      <label class="post-date">Posted: September 10, 2019</label>
+      <h1>Understanding Gaussian Processes</h1>
+      <div class="split-bar"></div>
+      <div class="post-description">
+
+        <h2><strong>What is a Gaussian Process?</strong></h2>
+
+        <!-- BEGIN SECTION TWO -->
+        <h2><strong>Recap: Gaussian distributions</strong></h2>
+
+        <p>
+          A simple one dimensional gaussian distribution is defined as:
+          \begin{equation}
+            \mathcal{N}(\mu, \sigma^{2}) = \frac{1}{{\sqrt{2\pi}\sigma}} e^{-(x-\mu)^{2} / 2\sigma^{2}}.
+          \end{equation}
+        </p>
+
+        <p>
+          Let's say we recorded the height of students in a typical classroom
+          and got the following measurements:
+        </p>
+        <p style="text-align: center">
+          153, 153, 156, 157, 158, 160, 161, 164, 165, 169, 171, 171, 175,
+          176, 177, 177, 179, 183, 187, 194.
+        </p>
+        <p>
+          Using the data above, we can calculate the sample mean and sample variance:
+          $$\mu = 169.3, \ \ \sigma = 129.81.$$
+        </p>
+        <p>
+          Assuming that the heights are normal distributed, we can substitute
+          the sample mean and sample variance into the first equation to
+          calculate the probability of seeing a new person with a particular height.
+        </p>
+        <p>
+          Now let's say we want to introduce weight into the mix. First we will rewrite
+          the first equation to support two variables:
+          \begin{equation}
+            \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma}).
+          \end{equation}
+        </p>
+
+
+        <p>
+          What's different this time is that $\boldsymbol{\mu}$ is a vector that
+          contains the mean of height and weight, and $\boldsymbol{\Sigma}$ is a
+          covariance matrix that describes the linear relationship between height
+          and weight. Let us denote $X$ as the random variable for height, and $Y$
+          as the random variable for weight. Then, we can calculate the following:
+          \begin{equation}
+            \boldsymbol{\mu} = \begin{bmatrix}\mu_{\textrm{X}} \\ \mu_{Y}\end{bmatrix},
+            \ \boldsymbol{\Sigma} = \begin{bmatrix}\textrm{Cov}[\textrm{X,X}] & \textrm{Cov}[\textrm{X,Y}] \\
+                                                   \textrm{Cov}[\textrm{Y,X}] & \textrm{Cov}[\textrm{Y,Y}]\end{bmatrix},
+          \end{equation}
+          where $\textrm{Cov}[\textrm{X,Y}]$ refers to the covariance of $X$ and $Y$,
+          which simply is the linear relationship between $X$ and $Y$. Finally, if we
+          want to calculate the probability of someone having a certain weight given that
+          they have a certain height, we can use the following formula to calculate that:
+          \begin{equation}
+            
+          \end{equation}
+        </p>
+
+
+        <h2>Making predictions with a gaussian process regressor</h2>
+
+        A gaussian process regressor uses the idea of
+
+        <p>
+          \begin{equation}
+            k_{ij} = e^{-\lVert x_{i} - x_{j}\rVert^{2}}
+          \end{equation}
+        </p>
+        <!-- END SECTION TWO -->
+
+      </div>
+    </div>
+  </body>
+</html>
